@@ -11,8 +11,7 @@
     "files": [
         "lib",
         "src",
-        "packages",
-        "demo.gif"
+        "packages"
     ],
     "main": "dist/index.cjs.js",
     "module": "dist/index.esm.js",

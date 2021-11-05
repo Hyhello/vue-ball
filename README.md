@@ -154,7 +154,7 @@ export default {
 
 以上代码运行效果如下（如果查看不了，请下载包，点击里面demo.gif即可）：
 
-![demo.gif](demo.gif)
+![demo.gif](https://github.com/Hyhello/vue-ball/blob/master/demo.gif)
 
 ## Api
 
