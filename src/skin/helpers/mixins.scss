@@ -1,0 +1,7 @@
+// flex
+@mixin flex($baseItems: center, $baseFlow: column nowrap, $baseJuestify: flex-start) {
+	display: flex;
+	align-items: $baseItems;
+	flex-flow: $baseFlow;
+	justify-content: $baseJuestify;
+}

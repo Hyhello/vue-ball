@@ -1,0 +1,75 @@
+// bem规范
+// b: 类似于命名空间
+// e: 是块的子节点。为了表明某个东西是一个元素
+// m: 修饰符是改变某个块的外观的标志
+// 说明：此处由于element-ui 对这个封装比较好，故直接使用
+@import './_config';
+@import 'function';
+
+@mixin B($block) {
+	$B: $namespace + '-' + $block !global;
+	.#{$B} {
+		@content;
+	}
+}
+
+@mixin E($element, $spearator: $element-separator) {
+	$E: $element;
+	$selector: &;
+	$currentSelector: '';
+	@each $unit in $element {
+		$currentSelector: #{$currentSelector + '.' + $B + $spearator + $unit + ','};
+	}
+	// 此处很巧妙
+	@if hitAllSpecialNestRule($selector) {
+		@at-root {
+			#{$selector} {
+				#{$currentSelector} {
+					@content;
+				}
+			}
+		}
+	} @else {
+		@at-root {
+			#{$currentSelector} {
+				@content;
+			}
+		}
+	}
+}
+
+@mixin M($modifier, $root: true) {
+	$selector: &;
+	$currentSelector: '';
+	@each $unit in $modifier {
+		$currentSelector: #{$currentSelector + '.' + $B + $modifier-separator + $unit + ','};
+	}
+	@if $root {
+		@at-root {
+			#{$currentSelector} {
+				@content;
+			}
+		}
+	} @else {
+		@at-root {
+			#{$selector} {
+				#{$currentSelector} {
+					@content;
+				}
+			}
+		}
+	}
+}
+
+@mixin when($state) {
+	$selector: &;
+	$currentSelector: '';
+	@each $unit in $state {
+		$currentSelector: #{$currentSelector + $selector + '.' + $state-prefix + $unit + ','};
+	}
+	@at-root {
+		#{$currentSelector} {
+			@content;
+		}
+	}
+}

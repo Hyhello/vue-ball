@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <!-- import CSS -->
+    <link rel="stylesheet" href="./node_modules/element-ui/lib/theme-chalk/index.css">
+    <style>
+        html,
+        body,
+        #app {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: blue;
+        }
+
+        .Bbb {
+            border: 1px solid #cccccc;
+            width: 80px;
+            height: 300px;
+        }
+
+        .c-btn {
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .chat {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+        }
+
+        .chat-icon {
+            font-size: 45px;
+        }
+
+        .is-heartBeat {
+            animation-name: heartBeat;
+            animation-duration: 1s;
+            animation-timing-function: ease-in-out;
+        }
+
+        @keyframes heartBeat {
+            0% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+
+            14% {
+                -webkit-transform: scale(1.3);
+                transform: scale(1.3);
+            }
+
+            28% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+
+            42% {
+                -webkit-transform: scale(1.3);
+                transform: scale(1.3);
+            }
+
+            70% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <el-button type="primary" class="c-btn" @click="action">
+            <i class="el-icon-shopping-cart-full"></i>
+            加入购物车
+        </el-button>
+        <vue-ball ref="ball" :duration="1600" :ball-nums="15" easing="linear" @after-enter="afterEnter">
+            <el-card class="chat">
+                <div class="chat-icon" :class="{'is-heartBeat': heartBeat}" @animationend="transitioned">
+                    <i class="el-icon-shopping-cart-full"></i>
+                </div>
+            </el-card>
+            <el-button slot="icon" type="primary" class="c-btn">
+                <i class="el-icon-shopping-cart-full"></i>
+                加入购物车
+            </el-button>
+            <!-- <i slot="icon" class="el-icon-shopping-cart-full"></i> -->
+        </vue-ball>
+    </div>
+</body>
+<!-- import Vue before Element -->
+<script src="./node_modules/vue/dist/vue.js"></script>
+
+<script src="./node_modules/element-ui/lib/index.js"></script>
+
+<!-- import JavaScript -->
+<script src="./lib/index.js"></script>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: function () {
+            return {
+                heartBeat: false
+            };
+        },
+        methods: {
+            // 加入球之后
+            transitioned() {
+                this.heartBeat = false;
+            },
+            action(ev) {
+                this.$refs.ball.action(ev.target).then(() => {
+                    this.heartBeat = true;
+                    this.$message.success('成功加入购物车！');
+                });
+            },
+            // 求进入后
+            afterEnter() {
+                console.log('成功加入购物车!');
+            }
+        }
+    });
+
+</script>
+
+</html>
