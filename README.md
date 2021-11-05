@@ -1,17 +1,17 @@
 # 快速开始
 
-## @cestc/c-ball
+## @hyhello/vue-ball
 
-@cestc/c-ball 基于vue2.0的购物车动画。
+@hyhello/vue-ball 基于vue2.0的购物车动画。
 
 ## Examples
 
 ## Use Setup
 
-### install @cestc/c-ball
+### install @hyhello/vue-ball
 
 ```javascript
-npm install @cestc/c-ball --save
+npm install @hyhello/vue-ball --save
 ```
 
 ### Vue mount
@@ -19,13 +19,13 @@ npm install @cestc/c-ball --save
 ```vuejs
 // global use
 import Vue from 'vue';
-import CBall from '@cestc/c-ball';
+import vueBall from '@hyhello/vue-ball';
 
 // use  @params：支持 options 全局配置, 默认：{ zIndex: 2000 }
-Vue.use(CBall, [options]);
+Vue.use(vueBall, [options]);
 
 // or Local use
-import { Ball } from '@cestc/c-ball';
+import { Ball } from '@hyhello/vue-ball';
 
 // 配置zIndex， 默认为2000
 Ball.configure(options);
@@ -104,27 +104,27 @@ export default {
             <i class="el-icon-shopping-cart-full"></i>
             加入购物车
         </el-button>
-        <c-ball ref="ball" :duration="600" @after-enter="afterEnter">
+        <vue-ball ref="ball" :duration="600" @after-enter="afterEnter">
             <el-card class="chat">
                 <div class="chat-icon" :class="{'is-heartBeat': heartBeat}" @animationend="transitioned">
                     <i class="el-icon-shopping-cart-full"></i>
                 </div>
             </el-card>
             <i slot="icon" class="el-icon-shopping-cart-full"></i>
-        </c-ball>
+        </vue-ball>
     </div>
 </template>
 <script>
     import { Button: ElButton, Message } from 'element-ui';
-    import { Ball as CBall } from '@cestc/c-ball';
+    import { Ball as vueBall } from '@hyhello/vue-ball';
 
     // *******此处可设置 zIndex，默认zIndex： 2000
-    // CBall.configure({
+    // vueBall.configure({
     //     zIndex: 2000
     // });
 
     export default {
-        components: { CBall, ElButton },
+        components: { vueBall, ElButton },
         data () {
             return {
                 heartBeat: false
