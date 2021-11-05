@@ -1,0 +1,16 @@
+@import './helpers/bem';
+
+@include B(ball) {
+    position: fixed;
+    width: 0;
+    height: 0;
+    top: 0;
+    left: 0;
+    @include E(outer) {
+        position: fixed;
+        line-height: 1;
+        @include E(inner) {
+            line-height: 1;
+        }
+    }
+}

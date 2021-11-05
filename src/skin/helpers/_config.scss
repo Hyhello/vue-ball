@@ -1,0 +1,22 @@
+/* Common
+-- Define common
+------------------------------------------------------- */
+
+// 基于BEM
+$namespace: __PREFIX__; // 此处配置在构建里面，方便组件与css命名空间统一配置
+$element-separator: '__';
+$modifier-separator: '--';
+$state-prefix: 'is-';
+
+
+$spaced: $namespace + '-';
+
+// 公共部分
+[class*='#{$spaced}'],
+[class*='#{$spaced}']::after,
+[class*='#{$spaced}']::before,
+[class^='#{$spaced}'],
+[class^='#{$spaced}']::after,
+[class^='#{$spaced}']::before {
+	box-sizing: border-box;
+}
