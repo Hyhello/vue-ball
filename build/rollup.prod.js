@@ -51,7 +51,8 @@ function buildEntry() {
                     banner,
                     file: `${outputDir}/index.${type}.js`,
                     sourcemap: false,
-                    exports: type === 'cjs' ? 'named' : 'default',
+                    // exports: type === 'umd' ? 'default' : 'named',   // 因为要适用于esm，故去掉了
+                    exports: 'named',
                     globals: {
                         vue: 'Vue'
                     }

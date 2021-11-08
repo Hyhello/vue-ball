@@ -30,3 +30,5 @@ export default {
 	install,
 	...components
 };
+
+export { Ball };

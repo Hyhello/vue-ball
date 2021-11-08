@@ -16,6 +16,7 @@ rollupConfig.output = [
 		name: name,
 		file: 'lib/index.js',
 		sourcemap: true,
+        exports: 'named',
 		globals: {
 			vue: 'Vue'
 		}
