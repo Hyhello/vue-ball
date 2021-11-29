@@ -39,7 +39,8 @@ export default {
 	},
 	data() {
 		return {
-			instance: null
+			instance: null,
+			promiseList: [] // 完成的promiseList
 		};
 	},
 	mounted() {
@@ -89,12 +90,14 @@ export default {
 						break;
 					}
 				}
-				this.afterEnter = resolve;
+				this.promiseList.push(resolve);
 			});
 		},
 		done() {
+			const afterEnter = this.promiseList.shift();
+			// eslint-disable-next-line no-unused-expressions
+			afterEnter && afterEnter();
 			this.$emit('after-enter');
-			this.afterEnter();
 		}
 	},
 	render() {
