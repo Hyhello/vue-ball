@@ -87,11 +87,7 @@
                     <i class="el-icon-shopping-cart-full"></i>
                 </div>
             </el-card>
-            <el-button slot="icon" type="primary" class="c-btn">
-                <i class="el-icon-shopping-cart-full"></i>
-                加入购物车
-            </el-button>
-            <!-- <i slot="icon" class="el-icon-shopping-cart-full"></i> -->
+            <i slot="icon" class="el-icon-shopping-cart-full"></i>
         </vue-ball>
     </div>
 </body>
@@ -104,6 +100,8 @@
 <script src="./lib/index.js"></script>
 
 <script>
+    var index = 0;
+    var c = 0;
     new Vue({
         el: '#app',
         data: function () {
@@ -117,9 +115,11 @@
                 this.heartBeat = false;
             },
             action(ev) {
+                console.log('c', c++);
                 this.$refs.ball.action(ev.target).then(() => {
                     this.heartBeat = true;
                     this.$message.success('成功加入购物车！');
+                    console.log('index', index++);
                 });
             },
             // 求进入后
