@@ -9,7 +9,6 @@
 	"extends": [
 		"airbnb-base",
 		"plugin:vue/essential",
-		"plugin:jest/recommended",
 		"plugin:prettier/recommended"
 	],
 	"globals": {
@@ -69,6 +68,9 @@
 			"env": {
 				"jest": true
 			},
+            "extends": [
+                "plugin:jest/recommended"
+            ],
 			"plugins": ["jest"]
 		}
 	]
