@@ -21,10 +21,6 @@ const baseConfig = {
     external: ['vue'],
     plugins: [
         alias(Object.assign({}, aliass)),
-        eslint({
-			formatter: require('eslint-friendly-formatter'),
-			include: ['src/**/*.{js,jsx,vue}', 'packages/**/*.{js,jsx,vue}']
-		}),
         nodeResolve({
             extensions: aliass.resolve
         }),
@@ -33,6 +29,10 @@ const baseConfig = {
         json({
             exclude: ['node_modules/**']
         }),
+        eslint({
+			formatter: require('eslint-friendly-formatter'),
+			include: ['src/**/*.{js,jsx,vue}', 'packages/**/*.{js,jsx,vue}']
+		}),
         vue({
             target: 'browser'
         }),
