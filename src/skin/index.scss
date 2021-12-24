@@ -9,6 +9,7 @@
     @include E(outer) {
         position: fixed;
         line-height: 1;
+        pointer-events: none;
         @include E(inner) {
             line-height: 1;
         }
